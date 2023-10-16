@@ -58,7 +58,7 @@ socket.on('ticktack player', (res) => {
     start = true;
     let driverx = Math.floor(Math.random() * 4) + 1;
     drive(driverx);
-    socket.emit('player speak', driverx)
+    // socket.emit('player speak', driverx)
 
 });
 

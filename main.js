@@ -45,8 +45,8 @@ var gameStart = true;
 socket.on('ticktack player', (res) => {
     console.log(res)
     if(playerId.includes(res.player_id)) {
-        console.log(res)
-        console.log(playerId.includes(res.player_id))
+        // console.log(res)
+        // console.log(playerId.includes(res.player_id))
     }
     if(playerId.includes(res.player_id) && res.tag == "player:back-to-playground") {
         start = false
@@ -61,6 +61,8 @@ socket.on('ticktack player', (res) => {
     if (start) return;
     start = true;
     currentMap = res.map_info.map
+    BOMB = res.map_info.bombs
+    SPOILS = res.map_info.spoils
     players = res.map_info.players
     myX = players[0].currentPosition.col; //15
     myY = players[0].currentPosition.row; // 3
@@ -72,7 +74,7 @@ socket.on('ticktack player', (res) => {
 
 function driveLoop(currentMap, res) {
     MAP = currentMap
-    let path = ProcessGetDirection.findPath(myX, myY)
+    let path =  ProcessGetDirection.findPath(myX, myY)
     let step = "", destX, destY = null;
     if (path === false) {
         return true
@@ -153,8 +155,6 @@ function onStartDirection() {
     let manual = $('#manual').val()
     let cor = manual.split(",");
 
-    console.log('saddddd----' + cor)
-    console.log('currentMap----' + currentMap)
     driveLoop(currentMap);
 }
 
