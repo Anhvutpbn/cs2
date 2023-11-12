@@ -41,63 +41,108 @@ socket.on('join game', (res) => {
 var myX, myY
 var flagMove = false;
 var gameStart = true;
+
+const START_GAME = "start-game"
+const MOVING_BANNED = "player:moving-banned"
+const START_MOVING = "player:start-moving"
+const STOP_MOVING = "player:stop-moving"
+const BE_ISOLATED = "player:be-isolated"
+const BTPG = "player:back-to-playground"
+const BOMBE = "bomb:explosed"
+const BOMBS = "bomb:setup"
+
 //API-2
 socket.on('ticktack player', (res) => {
-    console.log(res)
+
     if(playerId.includes(res.player_id)) {
-        // console.log(res)
-        // console.log(playerId.includes(res.player_id))
+        console.log(res)
+        if(
+            res.tag.includes("player:moving-banned") ||
+            res.tag.includes("player:be-isolated")
+        ) {
+
+            start = true
+        }
+
     }
-    if(playerId.includes(res.player_id) && res.tag == "player:back-to-playground") {
+    if(playerId.includes(res.player_id) && res.tag == BTPG) {
+        start = false
+        gameStart = true;
+    }
+    if(playerId.includes(res.player_id) && res.tag == START_MOVING) {
+        start = false
+        gameStart = false;
+    }
+    if(playerId.includes(res.player_id) && res.tag == STOP_MOVING) {
         start = false
         gameStart = false;
     }
 
-    if(playerId.includes(res.player_id) && res.tag == "player:moving-banned") {
+    if(playerId.includes(res.player_id) && res.tag == MOVING_BANNED) {
+        start = false
+        gameStart = true;
+        console.log("Ngu qua ma")
+    }
+
+    if(playerId.includes(res.player_id) && res.tag == START_GAME) {
         start = false
         gameStart = false;
     }
 
-    if (start) return;
-    start = true;
-    currentMap = res.map_info.map
-    BOMB = res.map_info.bombs
-    SPOILS = res.map_info.spoils
-    players = res.map_info.players
-    myX = players[0].currentPosition.col; //15
-    myY = players[0].currentPosition.row; // 3
-    document.getElementById('ticktack-status').innerHTML = 'ON';
-    driveLoop(currentMap, res);
-    
+    if(playerId.includes(res.player_id)  && BOMBE) {
+        bombSetup = false
+        gameStart = false;
+    }
+    // if(playerId.includes(res.player_id) || res.tag.includes("start-game") || res.tag.includes("player:stop-moving")) {
+        if (start) return;
+        start = true;
+        currentMap = res.map_info.map
+        BOMB = res.map_info.bombs
+        SPOILS = res.map_info.spoils
+        players = res.map_info.players
+        myX = players[0].currentPosition.col; //15
+        myY = players[0].currentPosition.row; // 3
+        document.getElementById('ticktack-status').innerHTML = 'ON';
+        driveLoop(currentMap, res);
+    // }
 });
 
 
 function driveLoop(currentMap, res) {
-    MAP = currentMap
-    let path =  ProcessGetDirection.findPath(myX, myY)
-    let step = "", destX, destY = null;
-    if (path === false) {
-        return true
+    if(gameStart) {
+        drive('b', null, null);
+        gameStart = false;
+        return false
     }
-    step = converPathToGamePad(path)
-    if(res.tag == "bomb:setup" && playerId.includes(res.player_id) ) {
-        let back = AfterPlanted.bombedRun(myY, myX, currentMap)
-        drive(back+'xxxxxxxxxx', destX, destY, true);
+    MAP = currentMap
+    // MAP = ProcessGetDirection.convertDangerToWall(Danger.coordinates(), currentMap)
+
+    let step = "", destX, destY = null;
+
+
+    if(res.tag.includes("bomb:setup") && playerId.includes(res.player_id) ) {
+        // Replace cac truong hop bomb no = 1
+
+        console.log("--------SETUP THE BOMB ---------")
+        let map_back_to_bomb = res.map_info.map
+        let spawnBeginOfOtherPlayer = res.map_info.players.find(player => player.id !== playerId)?.currentPosition;
+        map_back_to_bomb[spawnBeginOfOtherPlayer.row][spawnBeginOfOtherPlayer.col] = 1
+        let back = AfterPlanted.bombedRun(myY, myX, map_back_to_bomb)
+        drive(back, destX, destY, true);
         bombSetup = true
     } else if(playerId.includes(res.player_id) ) {
-        if(!bombSetup) {
-            drive(step, destX, destY, false);
+        console.log("if else")
+        if(!bombSetup && res.tag.includes(BOMBE)) {
+            console.log("!bomb setup")
+            let path =  ProcessGetDirection.findPath(myX, myY)
+            if (path == false) {
+                return true
+            }
+            step = converPathToGamePad(path)
+            drive(step+"b", destX, destY, false);
+        } else {
+            gameStart = true
         }
-    }
-
-    if(gameStart) {
-        drive(step+'b', destX, destY);
-        gameStart = false;
-    }
-
-    if(checkBombList(res.map_info.bombs) && playerId.includes(res.player_id)  && res.tag == 'bomb:explosed') {
-        bombSetup = false
-        gameStart = true;
     }
 
     start = false
@@ -105,6 +150,9 @@ function driveLoop(currentMap, res) {
 
 function converPathToGamePad(path) {
     let step = ''
+    if (path == undefined) {
+        return "x"
+    }
     for (let index = 1; index < path.length; index++) {
         let nextStepLocation = path[index];
         let previousLocation = path[index - 1]
@@ -150,50 +198,15 @@ socket.on('drive player', (res) => {
     
 });
 
-function onStartDirection() {
-    MAP = currentMap
-    let manual = $('#manual').val()
-    let cor = manual.split(",");
-
-    driveLoop(currentMap);
-}
-
-function onManualDrive() {
-    drive($('#manual').val())
-}
-
 function drive(d, x, y, f) {
+
+    console.log(d)
+    console.log(f)
     if(f) {
         ne_bom_timeout = true;
         socket.emit("drive player", {direction: d})
     }else{
         ne_bom_timeout = false;
-        socket.emit("drive player", {direction: d + 'b'})
+        socket.emit("drive player", {direction: d})
     }
-}
-
-function SortPosSpoils(spoils) { 
-    spoils.sort(function(a,b) {
-        var pos_a_to_player = Math.abs(a.row - myY) + Math.abs(a.col - myX);
-        var pos_b_to_player = Math.abs(b.row - myY) + Math.abs(b.col - myX);
-        if (pos_a_to_player < pos_b_to_player) {
-            return -1;
-        } 
-         if (pos_a_to_player > pos_b_to_player)  {
-            return 1;
-        } 
-    
-        return 0;
-    
-    }); 
-    return spoils;
-}
-
-function checkBombList(bombs) {
-    for (let i = 0; i < bombs.length; i++) {
-        if(bombs[i].playerId == playerId) {
-            return false
-        }
-    }
-    return true
 }

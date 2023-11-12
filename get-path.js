@@ -37,12 +37,12 @@ Danger.coordinates = function () {
 
 
     for (let index = 0; index < BOMB.length;  index++) {
-        MAP[BOMB[index].row][BOMB[index].col] = 15
+        MAP[BOMB[index].row][BOMB[index].col] = 1
     }
 
     for (let i = minRow; i < maxRow; i++) {
         for (let y = minCol; y < maxCol; y++) {
-            if (MAP[i][y] === Danger.TELEPORT || MAP[i][y] ===  Danger.MAP_EGG) {
+            if (MAP[i][y] == Danger.TELEPORT || MAP[i][y] ==  Danger.MAP_EGG) {
                 MAP[i][y] = 1;
             }
         }
@@ -87,19 +87,19 @@ Medic.link = 6;
 Medic.findFinishPoint = function (fromX, fromY) {
     let coordinate = [{x: fromX, y: fromY, loopIndex: 0}];
 
-    // sét các tọa độ nguy hiểm thành tường đá
-    // ProcessGetDirection.map = ProcessGetDirection.convertDangerToWall(Danger.coordinates(), MAP)
     let loopIndex = 0;
     let flag = true;
     do {
-        if (loopIndex === 0) {
+        if (loopIndex == 50) {
+            flag = false
+        } else if (loopIndex == 0) {
             coordinate = [{x: fromX, y: fromY, loopIndex: 0}]
         } else {
             let pathTemp = [...coordinate];
             for (let index = 0; index < pathTemp.length; index++) {
                 const element = pathTemp[index];
                 let result = Medic.getCoordinates(element.x, element.y, coordinate, loopIndex)
-                if (result.status === false) {
+                if (result.status == false) {
                     flag = false
                     return result.data
                 } else {
@@ -129,7 +129,7 @@ Medic.getCoordinates = function (row, col, coordinate, loopIndex) {
 }
 
 Medic.checkWall = function (coordinate) {
-    if (MAP[coordinate.col][coordinate.row] === Medic.balk) {
+    if (MAP[coordinate.col][coordinate.row] == Medic.balk) {
         return true;
     }
     return false;
@@ -138,7 +138,7 @@ Medic.checkWall = function (coordinate) {
 Medic.checkAvailablePoint = function (x, y) {
     if (MAP[y] && MAP[y][x]) {
         let point = MAP[y][x];
-        return point === 0
+        return point == 0
     }
     return false;
 }
@@ -194,8 +194,8 @@ Medic.getStep = function (x, y, loopIndex, pathTemp) {
 
 Medic.isExist = function (loopIndex, x, y, pathTemp) {
     let isExistsUp = false
-    if (pathTemp.findIndex(element => element.x === x && element.y === y) !== -1
-        || MAP[y][x] === Medic.wall || MAP[y][x] === Medic.balk || MAP[y][x] === Medic.link) {
+    if (pathTemp.findIndex(element => element.x == x && element.y == y) !== -1
+        || MAP[y][x] == Medic.wall || MAP[y][x] == Medic.balk || MAP[y][x] == Medic.link) {
         isExistsUp = true
     }
     return isExistsUp;
@@ -255,28 +255,28 @@ ProcessGetDirection.findBack = function (pathFB, loopIndex, xDest, yDest) {
             };
 
 
-            if (pathFB.findIndex(element => element.x === sUp.x && element.y === sUp.y && element.loopIndex === index) !== -1) {
+            if (pathFB.findIndex(element => element.x == sUp.x && element.y == sUp.y && element.loopIndex == index) !== -1) {
                 findBackArray.push(sUp)
                 continue
             }
 
-            if (pathFB.findIndex(element => element.x === sLeft.x && element.y === sLeft.y && element.loopIndex === index) !== -1) {
+            if (pathFB.findIndex(element => element.x == sLeft.x && element.y == sLeft.y && element.loopIndex == index) !== -1) {
                 findBackArray.push(sLeft)
                 continue
             }
 
 
-            if (pathFB.findIndex(element => element.x === sRight.x && element.y === sRight.y && element.loopIndex === index) !== -1) {
+            if (pathFB.findIndex(element => element.x == sRight.x && element.y == sRight.y && element.loopIndex == index) !== -1) {
                 findBackArray.push(sRight)
                 continue
             }
 
 
-            if (pathFB.findIndex(element => element.x === sDown.x && element.y === sDown.y && element.loopIndex === index) !== -1) {
+            if (pathFB.findIndex(element => element.x == sDown.x && element.y == sDown.y && element.loopIndex == index) !== -1) {
                 findBackArray.push(sDown)
                 continue
             }
-            if (index === 0) flag = false
+            if (index == 0) flag = false
         }
 
         flag = false
@@ -337,82 +337,85 @@ ProcessGetDirection.getStep = function (x, y, loopIndex, pathTemp) {
 
 ProcessGetDirection.isExist = function (loopIndex, x, y, pathTemp) {
     let isExistsUp = false
-    // console.log("ProcessGetDirection.map[y][x] = "+ProcessGetDirection.map[y][x])
-    if (pathTemp.findIndex(element => element.x === x && element.y === y) != -1
-        || MAP[y][x] === ProcessGetDirection.brick || MAP[y][x] === ProcessGetDirection.balk || MAP[y][x] === ProcessGetDirection.link) {
+    if (pathTemp.findIndex(element => element.x == x && element.y == y) != -1
+        || MAP[y][x] == ProcessGetDirection.brick || MAP[y][x] == ProcessGetDirection.balk || MAP[y][x] == ProcessGetDirection.link) {
         isExistsUp = true
     }
     return isExistsUp;
 }
 
 ProcessGetDirection.convertDangerToWall = function (dangerCoordinates, maps) {
-    console.log("---------------maps before---------------")
-    console.log(maps)
-    console.log("---------------End maps before---------------")
-    for (let index = 0; index < BOMB.length;  index++) {
-        maps[BOMB[index].row][BOMB[index].col] = 1
-        // convert col.
-        // mặc định là cho tọa độ của bomb là 4.
-        // for (let rowBomb = BOMB[index].row; rowBomb >= (rowBomb - 4); rowBomb-- ) {
-        //     if(rowBomb > 0) {
-        //         console.log("1-------------"+rowBomb+""+BOMB[index].col)
-        //         maps[rowBomb][BOMB[index].col] = 1
-        //     }
-        // }
-        // for (let rowBomb = BOMB[index].row; rowBomb <= (rowBomb + 4); rowBomb++ ) {
-        //     if(rowBomb < 14) {
-        //         console.log("2-------------"+rowBomb+""+BOMB[index].col)
-        //         maps[rowBomb][BOMB[index].col] = 1
-        //     }
-        // }
-        //
-        // // convert row
-        // for (let colBomb = BOMB[index].col; colBomb >= (colBomb - 4); colBomb-- ) {
-        //     if(colBomb > 0) {
-        //         console.log("3-------------"+BOMB[index].row+""+colBomb)
-        //         maps[BOMB[index].row][colBomb] = 1
-        //     }
-        // }
-        // for (let colBomb = BOMB[index].col; colBomb <= (colBomb + 4); colBomb++ ) {
-        //     if(colBomb < 14) {
-        //         console.log("4-------------"+BOMB[index].row+""+colBomb)
-        //         maps[BOMB[index].row][colBomb] = 1
-        //     }
-        // }
+    // for (let index = 0; index < BOMB.length;  index++) {
+    //     maps[BOMB[index].row][BOMB[index].col] = 1
+    //     // convert col.
+    //     // mặc định là cho tọa độ của bomb là 4.
+    //     for (let rowBomb = BOMB[index].row; rowBomb >= (rowBomb - 4); rowBomb-- ) {
+    //         if(rowBomb > 0) {
+    //             maps[rowBomb][BOMB[index].col] = 1
+    //         } else {
+    //             break
+    //         }
+    //     }
+    //
+    //     for (let rowBomb = BOMB[index].row; rowBomb <= (rowBomb + 4); rowBomb++ ) {
+    //         if(rowBomb < 14) {
+    //             maps[rowBomb][BOMB[index].col] = 1
+    //         } else {
+    //             break
+    //         }
+    //     }
+    //
+    //     // convert row
+    //     for (let colBomb = BOMB[index].col; colBomb >= (colBomb - 4); colBomb-- ) {
+    //         if(colBomb > 0) {
+    //             maps[BOMB[index].row][colBomb] = 1
+    //         } else {
+    //             break
+    //         }
+    //     }
+    //
+    //     for (let colBomb = BOMB[index].col; colBomb <= (colBomb + 4); colBomb++ ) {
+    //         if(colBomb < 14) {
+    //             maps[BOMB[index].row][colBomb] = 1
+    //         } else {
+    //             break
+    //         }
+    //     }
+    // }
 
-    }
+
+
     for (let index = 0; index < SPOILS.length;  index++) {
-        if(SPOILS[index].spoil_type === 6) {
+        if(SPOILS[index].spoil_type == 6) {
             maps[SPOILS[index].row][SPOILS[index].col] = 1
         }
     }
+
     for (let index = 0; index < dangerCoordinates.length; index++) {
         maps[dangerCoordinates[index].row][dangerCoordinates[index].col] = 1
     }
-    console.log("---------------maps after---------------")
-    console.log(maps)
-    console.log("---------------End maps after---------------")
+
     return maps;
 }
 
 ProcessGetDirection.findPath = function (fromX, fromY) {
+
     let path = [];
-    if (MAP[fromY][fromX] === ProcessGetDirection.quaran) {
+    if (MAP[fromY][fromX] == ProcessGetDirection.quaran) {
         return false
     }
-    // console.log('From - to ' + fromX + '-' + fromY + '---------------' + toX + '-' + toY)
-    // sét các tọa độ nguy hiểm thành tường đá
-    ProcessGetDirection.map = ProcessGetDirection.convertDangerToWall(Danger.coordinates(), MAP)
-
 
     let currentPoint = Medic.findFinishPoint(fromX, fromY);
+
     let toX = currentPoint.row
     let toY = currentPoint.col
 
     let loopIndex = 0;
     let flag = true;
     do {
-        if (loopIndex === 0) {
+        if(loopIndex == 20 ) {
+            flag = false
+        } else if (loopIndex == 0) {
             path.push({
                 x: fromX,
                 y: fromY,
@@ -426,16 +429,15 @@ ProcessGetDirection.findPath = function (fromX, fromY) {
                 path = ProcessGetDirection.getStep(element.x, element.y, loopIndex, path)
             }
         }
-        if (path.findIndex(element => element.x === toX && element.y === toY) !== -1) {
+        if (path.findIndex(element => element.x == toX && element.y == toY) !== -1) {
             flag = false;
             //find back
             return ProcessGetDirection.findBack(path, loopIndex, toX, toY).reverse()
         }
-        // if(loopIndex == 13 ) {
-        //     flag = false
-        // }
+
         loopIndex++;
     } while (flag);
+
 }
 
 // let pa = ProcessGetDirection.findPath(FROM_COL,FROM_ROW,TO_COL,TO_ROW)
@@ -464,8 +466,8 @@ AfterPlanted.findFinishPoint = function (fromX, fromY) {
         }
 
         loopIndex++;
-    } while (loopIndex < 4);
-    // console.log(coordinate)
+    } while (loopIndex < 8);
+
     return coordinate;
 }
 
@@ -488,7 +490,7 @@ AfterPlanted.checkAvailable = function (coordinate, fromX, fromY) {
 AfterPlanted.checkAvailablePoint = function (x, y) {
     if (MAP[y] && MAP[y][x]) {
         let point = MAP[y][x];
-        return point === 0
+        return point == 0
     }
     return false;
 }
@@ -544,8 +546,8 @@ AfterPlanted.getStep = function (x, y, loopIndex, pathTemp, fromX, fromY) {
 
 AfterPlanted.isExist = function (loopIndex, x, y, pathTemp, fromX, fromY) {
     let isExistsUp = false
-    if (pathTemp.findIndex(element => element.x === x && element.y === y) != -1
-        || MAP[y][x] === AfterPlanted.wall || MAP[y][x] === AfterPlanted.teleport || MAP[y][x] === AfterPlanted.egg) {
+    if (pathTemp.findIndex(element => element.x == x && element.y == y) != -1
+        || MAP[y][x] == AfterPlanted.wall || MAP[y][x] == AfterPlanted.teleport || MAP[y][x] == AfterPlanted.egg) {
         isExistsUp = true
     }
     return isExistsUp;
@@ -553,14 +555,14 @@ AfterPlanted.isExist = function (loopIndex, x, y, pathTemp, fromX, fromY) {
 
 AfterPlanted.checkWalk = function (x, y, currentMap) {
     let isExistsUp = true
-    if (currentMap[x][y] === 1 || currentMap[x][y] === 5 || currentMap[x][y] === 6) {
+    if (currentMap[x][y] == 1 || currentMap[x][y] == 5 || currentMap[x][y] == 2 || currentMap[x][y] == 6) {
         isExistsUp = false
     }
     return isExistsUp;
 }
 
 AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
-    if(AfterPlanted.checkWalk(fromX-1, fromY, currentMap)) { 
+    if(AfterPlanted.checkWalk(fromX-1, fromY, currentMap)) {
         if(AfterPlanted.checkWalk(fromX-1, fromY+1, currentMap)) { 
             return '32'
         } 

@@ -1,4 +1,4 @@
-const gameId = '294f7e84-89f9-4944-819e-5e0ed51acbb6';
+const gameId = 'ea0b3e17-1143-4818-9e83-084bfabfbe2b';
 
 const D_LEFT = 1, D_RIGHT = 2, D_UP = 3, D_DOWN = 4;
 const D_BOMB = "b"
@@ -8,7 +8,9 @@ const D_STOP = "x"
 //     WOOD: 2,
 //     BRICK: 1
 // }
-var MAP = {};
+let MAP = {};
+let BOMB = [];
+let SPOILS = [];
 let currentMap = {};
 let players;
 

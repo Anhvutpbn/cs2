@@ -4,11 +4,11 @@
  * Released under the MIT License.
  */
 (function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
+	if(typeof exports == 'object' && typeof module == 'object')
 		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
+	else if(typeof define == 'function' && define.amd)
 		define([], factory);
-	else if(typeof exports === 'object')
+	else if(typeof exports == 'object')
 		exports["io"] = factory();
 	else
 		root["io"] = factory();
@@ -81,7 +81,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.t = function(value, mode) {
 /******/ 		if(mode & 1) value = __webpack_require__(value);
 /******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		if((mode & 4) && typeof value == 'object' && value && value.__esModule) return value;
 /******/ 		var ns = Object.create(null);
 /******/ 		__webpack_require__.r(ns);
 /******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
@@ -121,7 +121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -155,7 +155,7 @@ module.exports = exports = lookup;
 var cache = exports.managers = {};
 
 function lookup(uri, opts) {
-  if (_typeof(uri) === "object") {
+  if (_typeof(uri) == "object") {
     opts = uri;
     uri = undefined;
   }
@@ -166,7 +166,7 @@ function lookup(uri, opts) {
   var id = parsed.id;
   var path = parsed.path;
   var sameNamespace = cache[id] && path in cache[id]["nsps"];
-  var newConnection = opts.forceNew || opts["force new connection"] || false === opts.multiplex || sameNamespace;
+  var newConnection = opts.forceNew || opts["force new connection"] || false == opts.multiplex || sameNamespace;
   var io;
 
   if (newConnection) {
@@ -238,7 +238,7 @@ Object.defineProperty(exports, "Manager", {
 "use strict";
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -248,7 +248,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
 
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object == null) break; } return object; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -256,11 +256,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -299,7 +299,7 @@ var Manager = /*#__PURE__*/function (_Emitter) {
     _this.nsps = {};
     _this.subs = [];
 
-    if (uri && "object" === _typeof(uri)) {
+    if (uri && "object" == _typeof(uri)) {
       opts = uri;
       uri = undefined;
     }
@@ -348,7 +348,7 @@ var Manager = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "reconnectionAttempts",
     value: function reconnectionAttempts(v) {
-      if (v === undefined) return this._reconnectionAttempts;
+      if (v == undefined) return this._reconnectionAttempts;
       this._reconnectionAttempts = v;
       return this;
     }
@@ -357,9 +357,9 @@ var Manager = /*#__PURE__*/function (_Emitter) {
     value: function reconnectionDelay(v) {
       var _a;
 
-      if (v === undefined) return this._reconnectionDelay;
+      if (v == undefined) return this._reconnectionDelay;
       this._reconnectionDelay = v;
-      (_a = this.backoff) === null || _a === void 0 ? void 0 : _a.setMin(v);
+      (_a = this.backoff) == null || _a == void 0 ? void 0 : _a.setMin(v);
       return this;
     }
   }, {
@@ -367,9 +367,9 @@ var Manager = /*#__PURE__*/function (_Emitter) {
     value: function randomizationFactor(v) {
       var _a;
 
-      if (v === undefined) return this._randomizationFactor;
+      if (v == undefined) return this._randomizationFactor;
       this._randomizationFactor = v;
-      (_a = this.backoff) === null || _a === void 0 ? void 0 : _a.setJitter(v);
+      (_a = this.backoff) == null || _a == void 0 ? void 0 : _a.setJitter(v);
       return this;
     }
   }, {
@@ -377,9 +377,9 @@ var Manager = /*#__PURE__*/function (_Emitter) {
     value: function reconnectionDelayMax(v) {
       var _a;
 
-      if (v === undefined) return this._reconnectionDelayMax;
+      if (v == undefined) return this._reconnectionDelayMax;
       this._reconnectionDelayMax = v;
-      (_a = this.backoff) === null || _a === void 0 ? void 0 : _a.setMax(v);
+      (_a = this.backoff) == null || _a == void 0 ? void 0 : _a.setMax(v);
       return this;
     }
   }, {
@@ -400,7 +400,7 @@ var Manager = /*#__PURE__*/function (_Emitter) {
     key: "maybeReconnectOnOpen",
     value: function maybeReconnectOnOpen() {
       // Only try to reconnect if it's the first time we're connecting
-      if (!this._reconnecting && this._reconnection && this.backoff.attempts === 0) {
+      if (!this._reconnecting && this._reconnection && this.backoff.attempts == 0) {
         // keeps reconnection from firing twice for the same reconnection loop
         this.reconnect();
       }
@@ -451,7 +451,7 @@ var Manager = /*#__PURE__*/function (_Emitter) {
         var timeout = this._timeout;
         debug("connect attempt will timeout after %d", timeout);
 
-        if (timeout === 0) {
+        if (timeout == 0) {
           openSub.destroy(); // prevents a race condition with the 'open' event
         } // set timer
 
@@ -606,7 +606,7 @@ var Manager = /*#__PURE__*/function (_Emitter) {
     key: "_packet",
     value: function _packet(packet) {
       debug("writing packet %j", packet);
-      if (packet.query && packet.type === 0) packet.nsp += "?" + packet.query;
+      if (packet.query && packet.type == 0) packet.nsp += "?" + packet.query;
       var encodedPackets = this.encoder.encode(packet);
 
       for (var i = 0; i < encodedPackets.length; i++) {
@@ -645,7 +645,7 @@ var Manager = /*#__PURE__*/function (_Emitter) {
       this.skipReconnect = true;
       this._reconnecting = false;
 
-      if ("opening" === this._readyState) {
+      if ("opening" == this._readyState) {
         // `onclose` will not fire because
         // an open event never happened
         this.cleanup();
@@ -801,11 +801,11 @@ exports.on = on;
 "use strict";
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol == "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length == "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o == "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n == "Object" && o.constructor) n = o.constructor.name; if (n == "Map" || n == "Set") return Array.from(o); if (n == "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -817,7 +817,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
 
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object == null) break; } return object; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -825,11 +825,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -932,7 +932,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
       this.subEvents();
       if (!this.io["_reconnecting"]) this.io.open(); // ensure open
 
-      if ("open" === this.io._readyState) this.onopen();
+      if ("open" == this.io._readyState) this.onopen();
       return this;
     }
     /**
@@ -990,7 +990,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
       packet.options = {};
       packet.options.compress = this.flags.compress !== false; // event ack callback
 
-      if ("function" === typeof args[args.length - 1]) {
+      if ("function" == typeof args[args.length - 1]) {
         debug("emitting packet with ack id %d", this.ids);
         this.acks[this.ids] = args.pop();
         packet.id = this.ids++;
@@ -1078,7 +1078,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "onpacket",
     value: function onpacket(packet) {
-      var sameNamespace = packet.nsp === this.nsp;
+      var sameNamespace = packet.nsp == this.nsp;
       if (!sameNamespace) return;
 
       switch (packet.type) {
@@ -1209,7 +1209,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
     value: function onack(packet) {
       var ack = this.acks[packet.id];
 
-      if ("function" === typeof ack) {
+      if ("function" == typeof ack) {
         debug("calling ack %s with %j", packet.id, packet.data);
         ack.apply(this, packet.data);
         delete this.acks[packet.id];
@@ -1403,7 +1403,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
         var listeners = this._anyListeners;
 
         for (var i = 0; i < listeners.length; i++) {
-          if (listener === listeners[i]) {
+          if (listener == listeners[i]) {
             listeners.splice(i, 1);
             return this;
           }
@@ -1480,9 +1480,9 @@ function url(uri, loc) {
   loc = loc || typeof location !== "undefined" && location;
   if (null == uri) uri = loc.protocol + "//" + loc.host; // relative path support
 
-  if (typeof uri === "string") {
-    if ("/" === uri.charAt(0)) {
-      if ("/" === uri.charAt(1)) {
+  if (typeof uri == "string") {
+    if ("/" == uri.charAt(0)) {
+      if ("/" == uri.charAt(1)) {
         uri = loc.protocol + uri;
       } else {
         uri = loc.host + uri;
@@ -1519,7 +1519,7 @@ function url(uri, loc) {
 
   obj.id = obj.protocol + "://" + host + ":" + obj.port; // define href
 
-  obj.href = obj.protocol + "://" + host + (loc && loc.port === obj.port ? "" : ":" + obj.port);
+  obj.href = obj.protocol + "://" + host + (loc && loc.port == obj.port ? "" : ":" + obj.port);
   return obj;
 }
 
@@ -1658,9 +1658,9 @@ Backoff.prototype.setJitter = function (jitter) {
       base64 += chars[bytes[i + 2] & 63];
     }
 
-    if (len % 3 === 2) {
+    if (len % 3 == 2) {
       base64 = base64.substring(0, base64.length - 1) + "=";
-    } else if (len % 3 === 1) {
+    } else if (len % 3 == 1) {
       base64 = base64.substring(0, base64.length - 2) + "==";
     }
 
@@ -1677,10 +1677,10 @@ Backoff.prototype.setJitter = function (jitter) {
         encoded3,
         encoded4;
 
-    if (base64[base64.length - 1] === "=") {
+    if (base64[base64.length - 1] == "=") {
       bufferLength--;
 
-      if (base64[base64.length - 2] === "=") {
+      if (base64[base64.length - 2] == "=") {
         bufferLength--;
       }
     }
@@ -1845,7 +1845,7 @@ Emitter.prototype.off = Emitter.prototype.removeListener = Emitter.prototype.rem
   for (var i = 0; i < callbacks.length; i++) {
     cb = callbacks[i];
 
-    if (cb === fn || cb.fn === fn) {
+    if (cb == fn || cb.fn == fn) {
       callbacks.splice(i, 1);
       break;
     }
@@ -1853,7 +1853,7 @@ Emitter.prototype.off = Emitter.prototype.removeListener = Emitter.prototype.rem
   // one is subscribed for to avoid memory leak.
 
 
-  if (callbacks.length === 0) {
+  if (callbacks.length == 0) {
     delete this._callbacks['$' + event];
   }
 
@@ -1922,7 +1922,7 @@ Emitter.prototype.hasListeners = function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* WEBPACK VAR INJECTION */(function(process) {function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /* eslint-env browser */
 
@@ -1953,7 +1953,7 @@ function useColors() {
   // NB: In an Electron preload script, document will be defined but not fully
   // initialized. Since we know we're in Chrome, we'll just detect this case
   // explicitly
-  if (typeof window !== 'undefined' && window.process && (window.process.type === 'renderer' || window.process.__nwjs)) {
+  if (typeof window !== 'undefined' && window.process && (window.process.type == 'renderer' || window.process.__nwjs)) {
     return true;
   } // Internet Explorer and Edge do not support colors.
 
@@ -1992,13 +1992,13 @@ function formatArgs(args) {
   var index = 0;
   var lastC = 0;
   args[0].replace(/%[a-zA-Z%]/g, function (match) {
-    if (match === '%%') {
+    if (match == '%%') {
       return;
     }
 
     index++;
 
-    if (match === '%c') {
+    if (match == '%c') {
       // We only are interested in the *last* %c
       // (the user may have provided their own)
       lastC = index;
@@ -2019,7 +2019,7 @@ function log() {
 
   // This hackery is required for IE8/9, where
   // the `console.log` function doesn't have 'apply'
-  return (typeof console === "undefined" ? "undefined" : _typeof(console)) === 'object' && console.log && (_console = console).log.apply(_console, arguments);
+  return (typeof console == "undefined" ? "undefined" : _typeof(console)) == 'object' && console.log && (_console = console).log.apply(_console, arguments);
 }
 /**
  * Save `namespaces`.
@@ -2114,7 +2114,7 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o == "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n == "Object" && o.constructor) n = o.constructor.name; if (n == "Map" || n == "Set") return Array.from(o); if (n == "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
@@ -2214,14 +2214,14 @@ function setup(env) {
       var index = 0;
       args[0] = args[0].replace(/%([a-zA-Z%])/g, function (match, format) {
         // If we encounter an escaped % then don't increase the array index
-        if (match === '%%') {
+        if (match == '%%') {
           return match;
         }
 
         index++;
         var formatter = createDebug.formatters[format];
 
-        if (typeof formatter === 'function') {
+        if (typeof formatter == 'function') {
           var val = args[index];
           match = formatter.call(self, val); // Now we need to remove `args[index]` since it's inlined in the `format`
 
@@ -2246,7 +2246,7 @@ function setup(env) {
     // debug.rawLog = rawLog;
     // env-specific initialization logic for debug instances
 
-    if (typeof createDebug.init === 'function') {
+    if (typeof createDebug.init == 'function') {
       createDebug.init(debug);
     }
 
@@ -2266,7 +2266,7 @@ function setup(env) {
   }
 
   function extend(namespace, delimiter) {
-    var newDebug = createDebug(this.namespace + (typeof delimiter === 'undefined' ? ':' : delimiter) + namespace);
+    var newDebug = createDebug(this.namespace + (typeof delimiter == 'undefined' ? ':' : delimiter) + namespace);
     newDebug.log = this.log;
     return newDebug;
   }
@@ -2284,7 +2284,7 @@ function setup(env) {
     createDebug.names = [];
     createDebug.skips = [];
     var i;
-    var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+    var split = (typeof namespaces == 'string' ? namespaces : '').split(/[\s,]+/);
     var len = split.length;
 
     for (i = 0; i < len; i++) {
@@ -2295,7 +2295,7 @@ function setup(env) {
 
       namespaces = split[i].replace(/\*/g, '.*?');
 
-      if (namespaces[0] === '-') {
+      if (namespaces[0] == '-') {
         createDebug.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
       } else {
         createDebug.names.push(new RegExp('^' + namespaces + '$'));
@@ -2332,7 +2332,7 @@ function setup(env) {
 
 
   function enabled(name) {
-    if (name[name.length - 1] === '*') {
+    if (name[name.length - 1] == '*') {
       return true;
     }
 
@@ -2445,7 +2445,7 @@ module.exports.parser = __webpack_require__(/*! engine.io-parser */ "./node_modu
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2459,11 +2459,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -2500,7 +2500,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
 
     _this = _super.call(this);
 
-    if (uri && "object" === _typeof(uri)) {
+    if (uri && "object" == _typeof(uri)) {
       opts = uri;
       uri = null;
     }
@@ -2508,14 +2508,14 @@ var Socket = /*#__PURE__*/function (_Emitter) {
     if (uri) {
       uri = parseuri(uri);
       opts.hostname = uri.host;
-      opts.secure = uri.protocol === "https" || uri.protocol === "wss";
+      opts.secure = uri.protocol == "https" || uri.protocol == "wss";
       opts.port = uri.port;
       if (uri.query) opts.query = uri.query;
     } else if (opts.host) {
       opts.hostname = parseuri(opts.host).host;
     }
 
-    _this.secure = null != opts.secure ? opts.secure : typeof location !== "undefined" && "https:" === location.protocol;
+    _this.secure = null != opts.secure ? opts.secure : typeof location !== "undefined" && "https:" == location.protocol;
 
     if (opts.hostname && !opts.port) {
       // if no port is specified manually, use the protocol default
@@ -2544,7 +2544,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
     }, opts);
     _this.opts.path = _this.opts.path.replace(/\/$/, "") + "/";
 
-    if (typeof _this.opts.query === "string") {
+    if (typeof _this.opts.query == "string") {
       _this.opts.query = parseqs.decode(_this.opts.query);
     } // set on handshake
 
@@ -2605,7 +2605,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
 
       if (this.opts.rememberUpgrade && Socket.priorWebsocketSuccess && this.transports.indexOf("websocket") !== -1) {
         transport = "websocket";
-      } else if (0 === this.transports.length) {
+      } else if (0 == this.transports.length) {
         // Emit error on next tick so it can be listened to
         var self = this;
         setTimeout(function () {
@@ -2693,16 +2693,16 @@ var Socket = /*#__PURE__*/function (_Emitter) {
         transport.once("packet", function (msg) {
           if (failed) return;
 
-          if ("pong" === msg.type && "probe" === msg.data) {
+          if ("pong" == msg.type && "probe" == msg.data) {
             debug('probe transport "%s" pong', name);
             self.upgrading = true;
             self.emit("upgrading", transport);
             if (!transport) return;
-            Socket.priorWebsocketSuccess = "websocket" === transport.name;
+            Socket.priorWebsocketSuccess = "websocket" == transport.name;
             debug('pausing current transport "%s"', self.transport.name);
             self.transport.pause(function () {
               if (failed) return;
-              if ("closed" === self.readyState) return;
+              if ("closed" == self.readyState) return;
               debug("changing transport and sending upgrade packet");
               cleanup();
               self.setTransport(transport);
@@ -2785,12 +2785,12 @@ var Socket = /*#__PURE__*/function (_Emitter) {
     value: function onOpen() {
       debug("socket open");
       this.readyState = "open";
-      Socket.priorWebsocketSuccess = "websocket" === this.transport.name;
+      Socket.priorWebsocketSuccess = "websocket" == this.transport.name;
       this.emit("open");
       this.flush(); // we check for `readyState` in case an `open`
       // listener already closed the socket
 
-      if ("open" === this.readyState && this.opts.upgrade && this.transport.pause) {
+      if ("open" == this.readyState && this.opts.upgrade && this.transport.pause) {
         debug("starting upgrade probes");
         var i = 0;
         var l = this.upgrades.length;
@@ -2809,7 +2809,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "onPacket",
     value: function onPacket(packet) {
-      if ("opening" === this.readyState || "open" === this.readyState || "closing" === this.readyState) {
+      if ("opening" == this.readyState || "open" == this.readyState || "closing" == this.readyState) {
         debug('socket receive: type "%s", data "%s"', packet.type, packet.data);
         this.emit("packet", packet); // Socket is live - any packet counts
 
@@ -2859,7 +2859,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
       this.pingTimeout = data.pingTimeout;
       this.onOpen(); // In case open handler closes socket
 
-      if ("closed" === this.readyState) return;
+      if ("closed" == this.readyState) return;
       this.resetPingTimeout();
     }
     /**
@@ -2893,7 +2893,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
 
       this.prevBufferLen = 0;
 
-      if (0 === this.writeBuffer.length) {
+      if (0 == this.writeBuffer.length) {
         this.emit("drain");
       } else {
         this.flush();
@@ -2952,17 +2952,17 @@ var Socket = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "sendPacket",
     value: function sendPacket(type, data, options, fn) {
-      if ("function" === typeof data) {
+      if ("function" == typeof data) {
         fn = data;
         data = undefined;
       }
 
-      if ("function" === typeof options) {
+      if ("function" == typeof options) {
         fn = options;
         options = null;
       }
 
-      if ("closing" === this.readyState || "closed" === this.readyState) {
+      if ("closing" == this.readyState || "closed" == this.readyState) {
         return;
       }
 
@@ -2989,7 +2989,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
     value: function close() {
       var self = this;
 
-      if ("opening" === this.readyState || "open" === this.readyState) {
+      if ("opening" == this.readyState || "open" == this.readyState) {
         this.readyState = "closing";
 
         if (this.writeBuffer.length) {
@@ -3050,7 +3050,7 @@ var Socket = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "onClose",
     value: function onClose(reason, desc) {
-      if ("opening" === this.readyState || "open" === this.readyState || "closing" === this.readyState) {
+      if ("opening" == this.readyState || "open" == this.readyState || "closing" == this.readyState) {
         debug('socket close with reason: "%s"', reason);
         var self = this; // clear timers
 
@@ -3132,7 +3132,7 @@ module.exports = Socket;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3146,11 +3146,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -3208,7 +3208,7 @@ var Transport = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "open",
     value: function open() {
-      if ("closed" === this.readyState || "" === this.readyState) {
+      if ("closed" == this.readyState || "" == this.readyState) {
         this.readyState = "opening";
         this.doOpen();
       }
@@ -3224,7 +3224,7 @@ var Transport = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "close",
     value: function close() {
-      if ("opening" === this.readyState || "open" === this.readyState) {
+      if ("opening" == this.readyState || "open" == this.readyState) {
         this.doClose();
         this.onClose();
       }
@@ -3241,7 +3241,7 @@ var Transport = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "send",
     value: function send(packets) {
-      if ("open" === this.readyState) {
+      if ("open" == this.readyState) {
         this.write(packets);
       } else {
         throw new Error("Transport not open");
@@ -3334,7 +3334,7 @@ function polling(opts) {
   var jsonp = false !== opts.jsonp;
 
   if (typeof location !== "undefined") {
-    var isSSL = "https:" === location.protocol;
+    var isSSL = "https:" == location.protocol;
     var port = location.port; // some user agents have empty `location.port`
 
     if (!port) {
@@ -3366,7 +3366,7 @@ function polling(opts) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3376,7 +3376,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
 
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object == null) break; } return object; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -3384,11 +3384,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -3445,7 +3445,7 @@ var JSONPPolling = /*#__PURE__*/function (_Polling) {
 
     _this.query.j = _this.index; // prevent spurious errors from being emitted when the window is unloaded
 
-    if (typeof addEventListener === "function") {
+    if (typeof addEventListener == "function") {
       addEventListener("beforeunload", function () {
         if (self.script) self.script.onerror = empty;
       }, false);
@@ -3598,7 +3598,7 @@ var JSONPPolling = /*#__PURE__*/function (_Polling) {
 
       if (this.iframe.attachEvent) {
         this.iframe.onreadystatechange = function () {
-          if (self.iframe.readyState === "complete") {
+          if (self.iframe.readyState == "complete") {
             complete();
           }
         };
@@ -3627,7 +3627,7 @@ module.exports = JSONPPolling;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -3643,11 +3643,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -3697,7 +3697,7 @@ var XHR = /*#__PURE__*/function (_Polling) {
     _this = _super.call(this, opts);
 
     if (typeof location !== "undefined") {
-      var isSSL = "https:" === location.protocol;
+      var isSSL = "https:" == location.protocol;
       var port = location.port; // some user agents have empty `location.port`
 
       if (!port) {
@@ -3841,7 +3841,7 @@ var Request = /*#__PURE__*/function (_Emitter) {
           }
         } catch (e) {}
 
-        if ("POST" === this.method) {
+        if ("POST" == this.method) {
           try {
             xhr.setRequestHeader("Content-type", "text/plain;charset=UTF-8");
           } catch (e) {}
@@ -3872,13 +3872,13 @@ var Request = /*#__PURE__*/function (_Emitter) {
           xhr.onreadystatechange = function () {
             if (4 !== xhr.readyState) return;
 
-            if (200 === xhr.status || 1223 === xhr.status) {
+            if (200 == xhr.status || 1223 == xhr.status) {
               self.onLoad();
             } else {
               // make sure the `error` event handler that's user-set
               // does not throw in the same tick and gets caught here
               setTimeout(function () {
-                self.onError(typeof xhr.status === "number" ? xhr.status : 0);
+                self.onError(typeof xhr.status == "number" ? xhr.status : 0);
               }, 0);
             }
           };
@@ -3946,7 +3946,7 @@ var Request = /*#__PURE__*/function (_Emitter) {
   }, {
     key: "cleanup",
     value: function cleanup(fromError) {
-      if ("undefined" === typeof this.xhr || null === this.xhr) {
+      if ("undefined" == typeof this.xhr || null == this.xhr) {
         return;
       } // xmlhttprequest
 
@@ -4021,9 +4021,9 @@ Request.requestsCount = 0;
 Request.requests = {};
 
 if (typeof document !== "undefined") {
-  if (typeof attachEvent === "function") {
+  if (typeof attachEvent == "function") {
     attachEvent("onunload", unloadHandler);
-  } else if (typeof addEventListener === "function") {
+  } else if (typeof addEventListener == "function") {
     var terminationEvent = "onpagehide" in globalThis ? "pagehide" : "unload";
     addEventListener(terminationEvent, unloadHandler, false);
   }
@@ -4049,7 +4049,7 @@ module.exports.Request = Request;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4063,11 +4063,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -4175,12 +4175,12 @@ var Polling = /*#__PURE__*/function (_Transport) {
 
       var callback = function callback(packet, index, total) {
         // if its the first message we consider the transport open
-        if ("opening" === self.readyState && packet.type === "open") {
+        if ("opening" == self.readyState && packet.type == "open") {
           self.onOpen();
         } // if its a close packet, we close the ongoing requests
 
 
-        if ("close" === packet.type) {
+        if ("close" == packet.type) {
           self.onClose();
           return false;
         } // otherwise bypass onData and handle the message
@@ -4197,7 +4197,7 @@ var Polling = /*#__PURE__*/function (_Transport) {
         this.polling = false;
         this.emit("pollComplete");
 
-        if ("open" === this.readyState) {
+        if ("open" == this.readyState) {
           this.poll();
         } else {
           debug('ignoring poll - transport state "%s"', this.readyState);
@@ -4222,7 +4222,7 @@ var Polling = /*#__PURE__*/function (_Transport) {
         }]);
       }
 
-      if ("open" === this.readyState) {
+      if ("open" == this.readyState) {
         debug("transport open - closing");
         close();
       } else {
@@ -4277,7 +4277,7 @@ var Polling = /*#__PURE__*/function (_Transport) {
 
       query = parseqs.encode(query); // avoid port if default for schema
 
-      if (this.opts.port && ("https" === schema && Number(this.opts.port) !== 443 || "http" === schema && Number(this.opts.port) !== 80)) {
+      if (this.opts.port && ("https" == schema && Number(this.opts.port) !== 443 || "http" == schema && Number(this.opts.port) !== 80)) {
         port = ":" + this.opts.port;
       } // prepend ? to query
 
@@ -4331,7 +4331,7 @@ module.exports = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4345,11 +4345,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -4372,7 +4372,7 @@ var _require2 = __webpack_require__(/*! ./websocket-constructor */ "./node_modul
 var debug = __webpack_require__(/*! debug */ "./node_modules/debug/src/browser.js")("engine.io-client:websocket"); // detect ReactNative environment
 
 
-var isReactNative = typeof navigator !== "undefined" && typeof navigator.product === "string" && navigator.product.toLowerCase() === "reactnative";
+var isReactNative = typeof navigator !== "undefined" && typeof navigator.product == "string" && navigator.product.toLowerCase() == "reactnative";
 
 var WS = /*#__PURE__*/function (_Transport) {
   _inherits(WS, _Transport);
@@ -4490,7 +4490,7 @@ var WS = /*#__PURE__*/function (_Transport) {
               }
 
               if (self.opts.perMessageDeflate) {
-                var len = "string" === typeof data ? Buffer.byteLength(data) : data.length;
+                var len = "string" == typeof data ? Buffer.byteLength(data) : data.length;
 
                 if (len < self.opts.perMessageDeflate.threshold) {
                   opts.compress = false;
@@ -4564,7 +4564,7 @@ var WS = /*#__PURE__*/function (_Transport) {
       var schema = this.opts.secure ? "wss" : "ws";
       var port = ""; // avoid port if default for schema
 
-      if (this.opts.port && ("wss" === schema && Number(this.opts.port) !== 443 || "ws" === schema && Number(this.opts.port) !== 80)) {
+      if (this.opts.port && ("wss" == schema && Number(this.opts.port) !== 443 || "ws" == schema && Number(this.opts.port) !== 80)) {
         port = ":" + this.opts.port;
       } // append timestamp to URI
 
@@ -4597,7 +4597,7 @@ var WS = /*#__PURE__*/function (_Transport) {
   }, {
     key: "check",
     value: function check() {
-      return !!WebSocket && !("__initialize" in WebSocket && this.name === WS.prototype.name);
+      return !!WebSocket && !("__initialize" in WebSocket && this.name == WS.prototype.name);
     }
   }, {
     key: "name",
@@ -4721,7 +4721,7 @@ var _require = __webpack_require__(/*! ./commons */ "./node_modules/engine.io-pa
     PACKET_TYPES_REVERSE = _require.PACKET_TYPES_REVERSE,
     ERROR_PACKET = _require.ERROR_PACKET;
 
-var withNativeArrayBuffer = typeof ArrayBuffer === "function";
+var withNativeArrayBuffer = typeof ArrayBuffer == "function";
 var base64decoder;
 
 if (withNativeArrayBuffer) {
@@ -4738,7 +4738,7 @@ var decodePacket = function decodePacket(encodedPacket, binaryType) {
 
   var type = encodedPacket.charAt(0);
 
-  if (type === "b") {
+  if (type == "b") {
     return {
       type: "message",
       data: decodeBase64Packet(encodedPacket.substring(1), binaryType)
@@ -4797,11 +4797,11 @@ module.exports = decodePacket;
 var _require = __webpack_require__(/*! ./commons */ "./node_modules/engine.io-parser/lib/commons.js"),
     PACKET_TYPES = _require.PACKET_TYPES;
 
-var withNativeBlob = typeof Blob === "function" || typeof Blob !== "undefined" && Object.prototype.toString.call(Blob) === "[object BlobConstructor]";
-var withNativeArrayBuffer = typeof ArrayBuffer === "function"; // ArrayBuffer.isView method is not defined in IE10
+var withNativeBlob = typeof Blob == "function" || typeof Blob !== "undefined" && Object.prototype.toString.call(Blob) == "[object BlobConstructor]";
+var withNativeArrayBuffer = typeof ArrayBuffer == "function"; // ArrayBuffer.isView method is not defined in IE10
 
 var isView = function isView(obj) {
-  return typeof ArrayBuffer.isView === "function" ? ArrayBuffer.isView(obj) : obj && obj.buffer instanceof ArrayBuffer;
+  return typeof ArrayBuffer.isView == "function" ? ArrayBuffer.isView(obj) : obj && obj.buffer instanceof ArrayBuffer;
 };
 
 var encodePacket = function encodePacket(_ref, supportsBinary, callback) {
@@ -4864,7 +4864,7 @@ var encodePayload = function encodePayload(packets, callback) {
     encodePacket(packet, false, function (encodedPacket) {
       encodedPackets[i] = encodedPacket;
 
-      if (++count === length) {
+      if (++count == length) {
         callback(encodedPackets.join(SEPARATOR));
       }
     });
@@ -4879,7 +4879,7 @@ var decodePayload = function decodePayload(encodedPayload, binaryType) {
     var decodedPacket = decodePacket(encodedPackets[i], binaryType);
     packets.push(decodedPacket);
 
-    if (decodedPacket.type === "error") {
+    if (decodedPacket.type == "error") {
       break;
     }
   }
@@ -4928,7 +4928,7 @@ try {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
  * Helpers.
@@ -4958,9 +4958,9 @@ module.exports = function (val, options) {
 
   var type = _typeof(val);
 
-  if (type === 'string' && val.length > 0) {
+  if (type == 'string' && val.length > 0) {
     return parse(val);
-  } else if (type === 'number' && isFinite(val)) {
+  } else if (type == 'number' && isFinite(val)) {
     return options["long"] ? fmtLong(val) : fmtShort(val);
   }
 
@@ -5210,7 +5210,7 @@ function pathNames(obj, path) {
   var regx = /\/{2,9}/g,
       names = path.replace(regx, "/").split("/");
 
-  if (path.substr(0, 1) == '/' || path.length === 0) {
+  if (path.substr(0, 1) == '/' || path.length == 0) {
     names.splice(0, 1);
   }
 
@@ -5259,7 +5259,7 @@ function defaultClearTimeout() {
 
 (function () {
   try {
-    if (typeof setTimeout === 'function') {
+    if (typeof setTimeout == 'function') {
       cachedSetTimeout = setTimeout;
     } else {
       cachedSetTimeout = defaultSetTimout;
@@ -5269,7 +5269,7 @@ function defaultClearTimeout() {
   }
 
   try {
-    if (typeof clearTimeout === 'function') {
+    if (typeof clearTimeout == 'function') {
       cachedClearTimeout = clearTimeout;
     } else {
       cachedClearTimeout = defaultClearTimeout;
@@ -5280,13 +5280,13 @@ function defaultClearTimeout() {
 })();
 
 function runTimeout(fun) {
-  if (cachedSetTimeout === setTimeout) {
+  if (cachedSetTimeout == setTimeout) {
     //normal enviroments in sane situations
     return setTimeout(fun, 0);
   } // if setTimeout wasn't available but was latter defined
 
 
-  if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+  if ((cachedSetTimeout == defaultSetTimout || !cachedSetTimeout) && setTimeout) {
     cachedSetTimeout = setTimeout;
     return setTimeout(fun, 0);
   }
@@ -5306,13 +5306,13 @@ function runTimeout(fun) {
 }
 
 function runClearTimeout(marker) {
-  if (cachedClearTimeout === clearTimeout) {
+  if (cachedClearTimeout == clearTimeout) {
     //normal enviroments in sane situations
     return clearTimeout(marker);
   } // if clearTimeout wasn't available but was latter defined
 
 
-  if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+  if ((cachedClearTimeout == defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
     cachedClearTimeout = clearTimeout;
     return clearTimeout(marker);
   }
@@ -5394,7 +5394,7 @@ process.nextTick = function (fun) {
 
   queue.push(new Item(fun, args));
 
-  if (queue.length === 1 && !draining) {
+  if (queue.length == 1 && !draining) {
     runTimeout(drainQueue);
   }
 }; // v8 likes predictible objects
@@ -5461,7 +5461,7 @@ process.umask = function () {
 "use strict";
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -5511,7 +5511,7 @@ function _deconstructPacket(data, buffers) {
     }
 
     return newData;
-  } else if (_typeof(data) === "object" && !(data instanceof Date)) {
+  } else if (_typeof(data) == "object" && !(data instanceof Date)) {
     var _newData = {};
 
     for (var key in data) {
@@ -5553,7 +5553,7 @@ function _reconstructPacket(data, buffers) {
     for (var i = 0; i < data.length; i++) {
       data[i] = _reconstructPacket(data[i], buffers);
     }
-  } else if (_typeof(data) === "object") {
+  } else if (_typeof(data) == "object") {
     for (var key in data) {
       if (data.hasOwnProperty(key)) {
         data[key] = _reconstructPacket(data[key], buffers);
@@ -5576,11 +5576,11 @@ function _reconstructPacket(data, buffers) {
 "use strict";
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
 
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object == null) break; } return object; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -5588,11 +5588,11 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) == "object" || typeof call == "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self == void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect == "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy == "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
@@ -5655,9 +5655,9 @@ var Encoder = /*#__PURE__*/function () {
     value: function encode(obj) {
       debug("encoding packet %j", obj);
 
-      if (obj.type === PacketType.EVENT || obj.type === PacketType.ACK) {
+      if (obj.type == PacketType.EVENT || obj.type == PacketType.ACK) {
         if (is_binary_1.hasBinary(obj)) {
-          obj.type = obj.type === PacketType.EVENT ? PacketType.BINARY_EVENT : PacketType.BINARY_ACK;
+          obj.type = obj.type == PacketType.EVENT ? PacketType.BINARY_EVENT : PacketType.BINARY_ACK;
           return this.encodeAsBinary(obj);
         }
       }
@@ -5674,7 +5674,7 @@ var Encoder = /*#__PURE__*/function () {
       // first is type
       var str = "" + obj.type; // attachments if we have them
 
-      if (obj.type === PacketType.BINARY_EVENT || obj.type === PacketType.BINARY_ACK) {
+      if (obj.type == PacketType.BINARY_EVENT || obj.type == PacketType.BINARY_ACK) {
         str += obj.attachments + "-";
       } // if we have a namespace other than `/`
       // we append it followed by a comma `,`
@@ -5747,14 +5747,14 @@ var Decoder = /*#__PURE__*/function (_Emitter) {
     value: function add(obj) {
       var packet;
 
-      if (typeof obj === "string") {
+      if (typeof obj == "string") {
         packet = this.decodeString(obj);
 
-        if (packet.type === PacketType.BINARY_EVENT || packet.type === PacketType.BINARY_ACK) {
+        if (packet.type == PacketType.BINARY_EVENT || packet.type == PacketType.BINARY_ACK) {
           // binary packet's json
           this.reconstructor = new BinaryReconstructor(packet); // no attachments, labeled binary but no binary data to follow
 
-          if (packet.attachments === 0) {
+          if (packet.attachments == 0) {
             _get(_getPrototypeOf(Decoder.prototype), "emit", this).call(this, "decoded", packet);
           }
         } else {
@@ -5795,12 +5795,12 @@ var Decoder = /*#__PURE__*/function (_Emitter) {
         type: Number(str.charAt(0))
       };
 
-      if (PacketType[p.type] === undefined) {
+      if (PacketType[p.type] == undefined) {
         throw new Error("unknown packet type " + p.type);
       } // look up attachments if type binary
 
 
-      if (p.type === PacketType.BINARY_EVENT || p.type === PacketType.BINARY_ACK) {
+      if (p.type == PacketType.BINARY_EVENT || p.type == PacketType.BINARY_ACK) {
         var start = i + 1;
 
         while (str.charAt(++i) !== "-" && i != str.length) {}
@@ -5815,13 +5815,13 @@ var Decoder = /*#__PURE__*/function (_Emitter) {
       } // look up namespace (if any)
 
 
-      if ("/" === str.charAt(i + 1)) {
+      if ("/" == str.charAt(i + 1)) {
         var _start = i + 1;
 
         while (++i) {
           var c = str.charAt(i);
-          if ("," === c) break;
-          if (i === str.length) break;
+          if ("," == c) break;
+          if (i == str.length) break;
         }
 
         p.nsp = str.substring(_start, i);
@@ -5843,7 +5843,7 @@ var Decoder = /*#__PURE__*/function (_Emitter) {
             break;
           }
 
-          if (i === str.length) break;
+          if (i == str.length) break;
         }
 
         p.id = Number(str.substring(_start2, i + 1));
@@ -5879,17 +5879,17 @@ var Decoder = /*#__PURE__*/function (_Emitter) {
     value: function isPayloadValid(type, payload) {
       switch (type) {
         case PacketType.CONNECT:
-          return _typeof(payload) === "object";
+          return _typeof(payload) == "object";
 
         case PacketType.DISCONNECT:
-          return payload === undefined;
+          return payload == undefined;
 
         case PacketType.CONNECT_ERROR:
-          return typeof payload === "string" || _typeof(payload) === "object";
+          return typeof payload == "string" || _typeof(payload) == "object";
 
         case PacketType.EVENT:
         case PacketType.BINARY_EVENT:
-          return Array.isArray(payload) && typeof payload[0] === "string";
+          return Array.isArray(payload) && typeof payload[0] == "string";
 
         case PacketType.ACK:
         case PacketType.BINARY_ACK:
@@ -5943,7 +5943,7 @@ var BinaryReconstructor = /*#__PURE__*/function () {
     value: function takeBinaryData(binData) {
       this.buffers.push(binData);
 
-      if (this.buffers.length === this.reconPack.attachments) {
+      if (this.buffers.length == this.reconPack.attachments) {
         // done with buffer list
         var packet = binary_1.reconstructPacket(this.reconPack, this.buffers);
         this.finishedReconstruction();
@@ -5979,21 +5979,21 @@ var BinaryReconstructor = /*#__PURE__*/function () {
 "use strict";
 
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol == "function" && typeof Symbol.iterator == "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol == "function" && obj.constructor == Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.hasBinary = exports.isBinary = void 0;
-var withNativeArrayBuffer = typeof ArrayBuffer === "function";
+var withNativeArrayBuffer = typeof ArrayBuffer == "function";
 
 var isView = function isView(obj) {
-  return typeof ArrayBuffer.isView === "function" ? ArrayBuffer.isView(obj) : obj.buffer instanceof ArrayBuffer;
+  return typeof ArrayBuffer.isView == "function" ? ArrayBuffer.isView(obj) : obj.buffer instanceof ArrayBuffer;
 };
 
 var toString = Object.prototype.toString;
-var withNativeBlob = typeof Blob === "function" || typeof Blob !== "undefined" && toString.call(Blob) === "[object BlobConstructor]";
-var withNativeFile = typeof File === "function" || typeof File !== "undefined" && toString.call(File) === "[object FileConstructor]";
+var withNativeBlob = typeof Blob == "function" || typeof Blob !== "undefined" && toString.call(Blob) == "[object BlobConstructor]";
+var withNativeFile = typeof File == "function" || typeof File !== "undefined" && toString.call(File) == "[object FileConstructor]";
 /**
  * Returns true if obj is a Buffer, an ArrayBuffer, a Blob or a File.
  *
@@ -6025,7 +6025,7 @@ function hasBinary(obj, toJSON) {
     return true;
   }
 
-  if (obj.toJSON && typeof obj.toJSON === "function" && arguments.length === 1) {
+  if (obj.toJSON && typeof obj.toJSON == "function" && arguments.length == 1) {
     return hasBinary(obj.toJSON(), true);
   }
 

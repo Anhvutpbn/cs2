@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ffff82b2-cf6c-4fe9-bde8-cb7ba4163761" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get-path.js" beforeDir="false" afterPath="$PROJECT_DIR$/get-path.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jquery-3.5.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/jquery-3.5.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lodash.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lodash.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/main2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/socket.io.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket.io.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1msmXWoBPi1s36rOGV38rl4F1lp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ffff82b2-cf6c-4fe9-bde8-cb7ba4163761" name="Default Changelist" comment="" />
+      <created>1610290714112</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610290714112</updated>
+      <workItem from="1610290715775" duration="6307000" />
+      <workItem from="1610636914682" duration="3828000" />
+      <workItem from="1610641002690" duration="201000" />
+      <workItem from="1697018173152" duration="2567000" />
+      <workItem from="1697097240281" duration="2010000" />
+      <workItem from="1697186009453" duration="3897000" />
+      <workItem from="1697338626400" duration="3333000" />
+      <workItem from="1697394386072" duration="7684000" />
+      <workItem from="1697441111499" duration="1834000" />
+      <workItem from="1697683214019" duration="2268000" />
+      <workItem from="1699202505645" duration="13269000" />
+      <workItem from="1699812678824" duration="6261000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
+  </component>
+</project>
