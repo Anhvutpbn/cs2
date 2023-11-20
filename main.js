@@ -10,7 +10,7 @@ socket.on('connect', () => {
     document.getElementById('socket-status').innerHTML = 'Connected';
     console.log('[Socket] connected to server');
     // API-1a
-    socket.emit('join game', {game_id: gameId, player_id: playerId});
+    socket.emit('join game', {game_id: gameId, player_id: "player1-xxx"});
 });
 
 socket.on('disconnect', () => {
@@ -40,7 +40,7 @@ socket.on('join game', (res) => {
 
 var myX, myY
 var flagMove = false;
-var gameStart = true;
+var gameStart = false;
 
 const START_GAME = "start-game"
 const MOVING_BANNED = "player:moving-banned"
@@ -53,9 +53,8 @@ const BOMBS = "bomb:setup"
 
 //API-2
 socket.on('ticktack player', (res) => {
-
+    console.log(res)
     if(playerId.includes(res.player_id)) {
-        console.log(res)
         if(
             res.tag.includes("player:moving-banned") ||
             res.tag.includes("player:be-isolated")
@@ -84,9 +83,9 @@ socket.on('ticktack player', (res) => {
         console.log("Ngu qua ma")
     }
 
-    if(playerId.includes(res.player_id) && res.tag == START_GAME) {
+    if(res.tag == START_GAME) {
         start = false
-        gameStart = false;
+        gameStart = true;
     }
 
     if(playerId.includes(res.player_id)  && BOMBE) {
@@ -109,24 +108,30 @@ socket.on('ticktack player', (res) => {
 
 
 function driveLoop(currentMap, res) {
+
+
     if(gameStart) {
-        drive('b', null, null);
-        gameStart = false;
-        return false
+        setTimeout(function(){
+            drive('b', null, null);
+            gameStart = false;
+            return false
+        }, 200);
     }
     MAP = currentMap
     // MAP = ProcessGetDirection.convertDangerToWall(Danger.coordinates(), currentMap)
 
     let step = "", destX, destY = null;
 
+    let map_back_to_bomb = res.map_info.map
+    let spawnBeginOfOtherPlayer = res.map_info.players.find(player => player.id !== playerId)?.currentPosition;
+    map_back_to_bomb[spawnBeginOfOtherPlayer.row][spawnBeginOfOtherPlayer.col] = 1
+
 
     if(res.tag.includes("bomb:setup") && playerId.includes(res.player_id) ) {
         // Replace cac truong hop bomb no = 1
 
         console.log("--------SETUP THE BOMB ---------")
-        let map_back_to_bomb = res.map_info.map
-        let spawnBeginOfOtherPlayer = res.map_info.players.find(player => player.id !== playerId)?.currentPosition;
-        map_back_to_bomb[spawnBeginOfOtherPlayer.row][spawnBeginOfOtherPlayer.col] = 1
+
         let back = AfterPlanted.bombedRun(myY, myX, map_back_to_bomb)
         drive(back, destX, destY, true);
         bombSetup = true

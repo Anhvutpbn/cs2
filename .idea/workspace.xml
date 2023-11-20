@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffff82b2-cf6c-4fe9-bde8-cb7ba4163761" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get-path.js" beforeDir="false" afterPath="$PROJECT_DIR$/get-path.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery-3.5.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/jquery-3.5.1.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lodash.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lodash.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index1.html" beforeDir="false" afterPath="$PROJECT_DIR$/index1.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main2.js" beforeDir="false" afterPath="$PROJECT_DIR$/main2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/socket.io.js" beforeDir="false" afterPath="$PROJECT_DIR$/socket.io.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +31,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Documents/TAKA/gacf-main" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -54,7 +54,10 @@
       <workItem from="1697441111499" duration="1834000" />
       <workItem from="1697683214019" duration="2268000" />
       <workItem from="1699202505645" duration="13269000" />
-      <workItem from="1699812678824" duration="6261000" />
+      <workItem from="1699812678824" duration="6609000" />
+      <workItem from="1700032711400" duration="4639000" />
+      <workItem from="1700120430357" duration="4894000" />
+      <workItem from="1700419468479" duration="3213000" />
     </task>
     <servers />
   </component>

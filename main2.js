@@ -11,7 +11,7 @@ socket.on('connect', () => {
     document.getElementById('socket-status').innerHTML = 'Connected';
     console.log('[Socket] connected to server');
     // API-1a
-    socket.emit('join game', {game_id: gameId, player_id: playerId});
+    socket.emit('join game', {game_id: gameId, player_id: "player2-xxx"});
 });
 
 socket.on('disconnect', () => {
@@ -51,6 +51,19 @@ var myX, myY
 var flag = START_GAME
 //API-2
 socket.on('ticktack player', (res) => {
-    let driverx = Math.floor(Math.random() * 4) + 1;
-    drive(driverx);
+    // let driverx = Math.floor(Math.random() * 4) + 1;
+    // drive(driverx);
 });
+
+function drive(d, x, y, f) {
+
+    console.log(d)
+    console.log(f)
+    if(f) {
+        ne_bom_timeout = true;
+        socket.emit("drive player", {direction: d})
+    }else{
+        ne_bom_timeout = false;
+        socket.emit("drive player", {direction: d})
+    }
+}
