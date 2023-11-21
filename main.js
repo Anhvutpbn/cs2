@@ -2,6 +2,8 @@
 // Reference link https://socket.io
 // <script src="socket.io.js"></script>
 let bombSetup = false;
+let runBomb = false;
+let findPath = false;
 const playerId = 'player1-xxx';
 var start = false
 // It it required to emit `join channel` event every time connection is happened
@@ -53,14 +55,17 @@ const BOMBS = "bomb:setup"
 
 //API-2
 socket.on('ticktack player', (res) => {
-    console.log(res)
+    console.log("gameStart")
+    console.log(gameStart)
+    console.log("gameStart")
     if(playerId.includes(res.player_id)) {
         if(
             res.tag.includes("player:moving-banned") ||
-            res.tag.includes("player:be-isolated")
+            res.tag == BE_ISOLATED
         ) {
 
             start = true
+            gameStart = true
         }
 
     }
@@ -79,7 +84,7 @@ socket.on('ticktack player', (res) => {
 
     if(playerId.includes(res.player_id) && res.tag == MOVING_BANNED) {
         start = false
-        gameStart = true;
+        gameStart = false;
         console.log("Ngu qua ma")
     }
 
@@ -111,6 +116,7 @@ function driveLoop(currentMap, res) {
 
 
     if(gameStart) {
+        console.log("GAME START")
         setTimeout(function(){
             drive('b', null, null);
             gameStart = false;
@@ -118,15 +124,27 @@ function driveLoop(currentMap, res) {
         }, 200);
     }
     MAP = currentMap
-    // MAP = ProcessGetDirection.convertDangerToWall(Danger.coordinates(), currentMap)
+    MAP = ProcessGetDirection.convertDangerToWall(Danger.coordinates(), currentMap)
 
     let step = "", destX, destY = null;
-
+    // replace enemy position
     let map_back_to_bomb = res.map_info.map
     let spawnBeginOfOtherPlayer = res.map_info.players.find(player => player.id !== playerId)?.currentPosition;
-    map_back_to_bomb[spawnBeginOfOtherPlayer.row][spawnBeginOfOtherPlayer.col] = 1
+    map_back_to_bomb[spawnBeginOfOtherPlayer.row][spawnBeginOfOtherPlayer.col] = 2
 
+    // Replace EGG
+    let spawnBeginOfEgg = res.map_info.dragonEggGSTArray.find(player => player.id !== playerId);
+    map_back_to_bomb[spawnBeginOfEgg.row][spawnBeginOfEgg.col] = 99
 
+    // Replace EGG Player
+    let spawnBeginOfEggPlayer = res.map_info.dragonEggGSTArray.find(player => player.id == playerId);
+    map_back_to_bomb[spawnBeginOfEggPlayer.row][spawnBeginOfEggPlayer.col] = 1
+    map_back_to_bomb[spawnBeginOfEggPlayer.row + 1][spawnBeginOfEggPlayer.col] = 1
+    map_back_to_bomb[spawnBeginOfEggPlayer.row - 1][spawnBeginOfEggPlayer.col] = 1
+    map_back_to_bomb[spawnBeginOfEggPlayer.row][spawnBeginOfEggPlayer.col + 1] = 1
+    map_back_to_bomb[spawnBeginOfEggPlayer.row][spawnBeginOfEggPlayer.col - 1] = 1
+
+console.log(map_back_to_bomb)
     if(res.tag.includes("bomb:setup") && playerId.includes(res.player_id) ) {
         // Replace cac truong hop bomb no = 1
 
@@ -138,17 +156,47 @@ function driveLoop(currentMap, res) {
     } else if(playerId.includes(res.player_id) ) {
         console.log("if else")
         if(!bombSetup && res.tag.includes(BOMBE)) {
-            console.log("!bomb setup")
+            console.log(BOMBE)
             let path =  ProcessGetDirection.findPath(myX, myY)
             if (path == false) {
                 return true
             }
             step = converPathToGamePad(path)
-            drive(step+"b", destX, destY, false);
-        } else {
-            gameStart = true
+            setTimeout(function(){
+                drive(step+"b", destX, destY, false);
+            }, 100);
         }
     }
+
+
+    // // Neu trong list bomb co bomb cua minh. Thi minh tranh. Neu khong co thi minh dat bomb
+    // let hasbomb = res.map_info.bombs.some(item => item.playerId === playerId && item.remainTime !== 0);
+    //
+    // if(hasbomb) {
+    //     console.log("----------hasbomb")
+    //     console.log(runBomb)
+    //     console.log("-----------hasbomb1")
+    //     if(!runBomb) {
+    //         console.log("---------!-hasbomb")
+    //         console.log(runBomb)
+    //         console.log("----------!-hasbomb1")
+    //         console.log("co bomb va chua chay")
+    //         let back = AfterPlanted.bombedRun(myY, myX, map_back_to_bomb)
+    //         drive(back, destX, destY, true);
+    //         runBomb = true
+    //     }
+    // } else {
+    //     console.log("Chua co bomb")
+    //     let path =  ProcessGetDirection.findPath(myX, myY)
+    //     if (path == false) {
+    //         return true
+    //     }
+    //     step = converPathToGamePad(path)
+    //     setTimeout(function(){
+    //         drive(step+"b", destX, destY, false);
+    //         runBomb = false
+    //     }, 100);
+    // }
 
     start = false
 }

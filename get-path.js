@@ -83,7 +83,8 @@ Danger.getListVirusZombie = function (col, row) {
 var Medic = {}
 Medic.wall = 1;
 Medic.balk = 2;
-Medic.link = 6;
+Medic.link = 3;
+Medic.PlayerEggNeedToKill = 99;
 Medic.findFinishPoint = function (fromX, fromY) {
     let coordinate = [{x: fromX, y: fromY, loopIndex: 0}];
 
@@ -129,6 +130,9 @@ Medic.getCoordinates = function (row, col, coordinate, loopIndex) {
 }
 
 Medic.checkWall = function (coordinate) {
+    if (MAP[coordinate.col][coordinate.row] == Medic.PlayerEggNeedToKill) {
+        return true;
+    }
     if (MAP[coordinate.col][coordinate.row] == Medic.balk) {
         return true;
     }
@@ -208,8 +212,8 @@ var ProcessGetDirection = {}
 // common const (edit)
 ProcessGetDirection.brick = 1;
 ProcessGetDirection.balk = 2;
-ProcessGetDirection.link = 6;
-ProcessGetDirection.quaran = 7;
+ProcessGetDirection.teleport = 3;
+ProcessGetDirection.quaran = 4;
 //20.3
 
 ProcessGetDirection.findBack = function (pathFB, loopIndex, xDest, yDest) {
@@ -338,58 +342,18 @@ ProcessGetDirection.getStep = function (x, y, loopIndex, pathTemp) {
 ProcessGetDirection.isExist = function (loopIndex, x, y, pathTemp) {
     let isExistsUp = false
     if (pathTemp.findIndex(element => element.x == x && element.y == y) != -1
-        || MAP[y][x] == ProcessGetDirection.brick || MAP[y][x] == ProcessGetDirection.balk || MAP[y][x] == ProcessGetDirection.link) {
+        || MAP[y][x] == ProcessGetDirection.brick || MAP[y][x] == ProcessGetDirection.balk || MAP[y][x] == ProcessGetDirection.teleport) {
         isExistsUp = true
     }
     return isExistsUp;
 }
 
 ProcessGetDirection.convertDangerToWall = function (dangerCoordinates, maps) {
-    // for (let index = 0; index < BOMB.length;  index++) {
-    //     maps[BOMB[index].row][BOMB[index].col] = 1
-    //     // convert col.
-    //     // mặc định là cho tọa độ của bomb là 4.
-    //     for (let rowBomb = BOMB[index].row; rowBomb >= (rowBomb - 4); rowBomb-- ) {
-    //         if(rowBomb > 0) {
-    //             maps[rowBomb][BOMB[index].col] = 1
-    //         } else {
-    //             break
-    //         }
-    //     }
-    //
-    //     for (let rowBomb = BOMB[index].row; rowBomb <= (rowBomb + 4); rowBomb++ ) {
-    //         if(rowBomb < 14) {
-    //             maps[rowBomb][BOMB[index].col] = 1
-    //         } else {
-    //             break
-    //         }
-    //     }
-    //
-    //     // convert row
-    //     for (let colBomb = BOMB[index].col; colBomb >= (colBomb - 4); colBomb-- ) {
-    //         if(colBomb > 0) {
-    //             maps[BOMB[index].row][colBomb] = 1
-    //         } else {
-    //             break
-    //         }
-    //     }
-    //
-    //     for (let colBomb = BOMB[index].col; colBomb <= (colBomb + 4); colBomb++ ) {
-    //         if(colBomb < 14) {
-    //             maps[BOMB[index].row][colBomb] = 1
-    //         } else {
-    //             break
-    //         }
+    //    for (let index = 0; index < SPOILS.length;  index++) {
+    //     if(SPOILS[index].spoil_type == 6) {
+    //         maps[SPOILS[index].row][SPOILS[index].col] = 1
     //     }
     // }
-
-
-
-    for (let index = 0; index < SPOILS.length;  index++) {
-        if(SPOILS[index].spoil_type == 6) {
-            maps[SPOILS[index].row][SPOILS[index].col] = 1
-        }
-    }
 
     for (let index = 0; index < dangerCoordinates.length; index++) {
         maps[dangerCoordinates[index].row][dangerCoordinates[index].col] = 1
@@ -555,7 +519,7 @@ AfterPlanted.isExist = function (loopIndex, x, y, pathTemp, fromX, fromY) {
 
 AfterPlanted.checkWalk = function (x, y, currentMap) {
     let isExistsUp = true
-    if (currentMap[x][y] == 1 || currentMap[x][y] == 5 || currentMap[x][y] == 2 || currentMap[x][y] == 6) {
+    if (currentMap[x][y] == 1 || currentMap[x][y] == 5 || currentMap[x][y] == 2 || currentMap[x][y] == 6 || currentMap[x][y] == 3 || currentMap[x][y] == 99) {
         isExistsUp = false
     }
     return isExistsUp;
@@ -691,7 +655,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '44441'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY-1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY-4, currentMap)) {
             return '11114'
@@ -700,7 +663,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '11113'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY+1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY+4, currentMap)) {
             return '22224'
@@ -709,7 +671,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '22223'
         }
     }
-
 
     // run 5 step
     if(AfterPlanted.checkWalk(fromX-1, fromY, currentMap)) {
@@ -728,7 +689,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '444441'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY-1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY-5, currentMap)) {
             return '111114'
@@ -737,7 +697,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '111113'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY+1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY+5, currentMap)) {
             return '222224'
@@ -746,7 +705,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '222223'
         }
     }
-
 
     // run 6 step
     if(AfterPlanted.checkWalk(fromX-1, fromY, currentMap)) {
@@ -765,7 +723,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '4444441'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY-1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY-6, currentMap)) {
             return '1111114'
@@ -774,7 +731,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '1111113'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY+1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY+6, currentMap)) {
             return '2222224'
@@ -801,7 +757,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '44444441'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY-1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY-7, currentMap)) {
             return '11111114'
@@ -810,7 +765,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '11111113'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY+1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY+7, currentMap)) {
             return '22222224'
@@ -819,7 +773,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '22222223'
         }
     }
-
 
     // run 8 step
     if(AfterPlanted.checkWalk(fromX-1, fromY, currentMap)) {
@@ -838,7 +791,6 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '444444441'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY-1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY-8, currentMap)) {
             return '111111114'
@@ -847,13 +799,46 @@ AfterPlanted.bombedRun = function (fromX, fromY, currentMap) {
             return '111111113'
         }
     }
-
     if(AfterPlanted.checkWalk(fromX, fromY+1, currentMap)) {
         if(AfterPlanted.checkWalk(fromX+1, fromY+8, currentMap)) {
             return '222222224'
         }
         if(AfterPlanted.checkWalk(fromX-1, fromY+8, currentMap)) {
             return '222222223'
+        }
+    }
+
+    // run 9 step
+    if(AfterPlanted.checkWalk(fromX-1, fromY, currentMap)) {
+        if(AfterPlanted.checkWalk(fromX-9, fromY+1, currentMap)) {
+            return '3333333332'
+        }
+        if(AfterPlanted.checkWalk(fromX-9, fromY-1, currentMap)) {
+            return '3333333331'
+        }
+    }
+    if(AfterPlanted.checkWalk(fromX+1, fromY, currentMap)) {
+        if(AfterPlanted.checkWalk(fromX+9, fromY+1, currentMap)) {
+            return '4444444442'
+        }
+        if(AfterPlanted.checkWalk(fromX+9, fromY-1, currentMap)) {
+            return '4444444441'
+        }
+    }
+    if(AfterPlanted.checkWalk(fromX, fromY-1, currentMap)) {
+        if(AfterPlanted.checkWalk(fromX+1, fromY-9, currentMap)) {
+            return '1111111114'
+        }
+        if(AfterPlanted.checkWalk(fromX-1, fromY-9, currentMap)) {
+            return '1111111113'
+        }
+    }
+    if(AfterPlanted.checkWalk(fromX, fromY+1, currentMap)) {
+        if(AfterPlanted.checkWalk(fromX+1, fromY+9, currentMap)) {
+            return '2222222224'
+        }
+        if(AfterPlanted.checkWalk(fromX-1, fromY+9, currentMap)) {
+            return '2222222223'
         }
     }
 }
