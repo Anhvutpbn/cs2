@@ -41,7 +41,7 @@ socket.on('join game', (res) => {
 });
 
 var myX, myY
-var flagMove = false;
+var flagMove = true;
 var gameStart = false;
 
 const START_GAME = "start-game"
@@ -55,23 +55,18 @@ const BOMBS = "bomb:setup"
 
 //API-2
 socket.on('ticktack player', (res) => {
-    console.log("gameStart")
-    console.log(gameStart)
-    console.log("gameStart")
-    if(playerId.includes(res.player_id)) {
-        if(
-            res.tag.includes("player:moving-banned") ||
-            res.tag == BE_ISOLATED
-        ) {
-
-            start = true
+    console.log("--")
+    console.log(res)
+    console.log("--")
+    if(playerId.includes(res.player_id) && res.tag == BE_ISOLATED ) {
             gameStart = true
-        }
-
+            flagMove = false
     }
     if(playerId.includes(res.player_id) && res.tag == BTPG) {
         start = false
         gameStart = true;
+        flagMove = true;
+        console.log(BTPG)
     }
     if(playerId.includes(res.player_id) && res.tag == START_MOVING) {
         start = false
@@ -99,7 +94,6 @@ socket.on('ticktack player', (res) => {
     }
     // if(playerId.includes(res.player_id) || res.tag.includes("start-game") || res.tag.includes("player:stop-moving")) {
         if (start) return;
-        start = true;
         currentMap = res.map_info.map
         BOMB = res.map_info.bombs
         SPOILS = res.map_info.spoils
@@ -144,7 +138,7 @@ function driveLoop(currentMap, res) {
     map_back_to_bomb[spawnBeginOfEggPlayer.row][spawnBeginOfEggPlayer.col + 1] = 1
     map_back_to_bomb[spawnBeginOfEggPlayer.row][spawnBeginOfEggPlayer.col - 1] = 1
 
-console.log(map_back_to_bomb)
+
     if(res.tag.includes("bomb:setup") && playerId.includes(res.player_id) ) {
         // Replace cac truong hop bomb no = 1
 
@@ -154,9 +148,10 @@ console.log(map_back_to_bomb)
         drive(back, destX, destY, true);
         bombSetup = true
     } else if(playerId.includes(res.player_id) ) {
-        console.log("if else")
+        console.log("bom da no")
         if(!bombSetup && res.tag.includes(BOMBE)) {
             console.log(BOMBE)
+
             let path =  ProcessGetDirection.findPath(myX, myY)
             if (path == false) {
                 return true
@@ -167,38 +162,6 @@ console.log(map_back_to_bomb)
             }, 100);
         }
     }
-
-
-    // // Neu trong list bomb co bomb cua minh. Thi minh tranh. Neu khong co thi minh dat bomb
-    // let hasbomb = res.map_info.bombs.some(item => item.playerId === playerId && item.remainTime !== 0);
-    //
-    // if(hasbomb) {
-    //     console.log("----------hasbomb")
-    //     console.log(runBomb)
-    //     console.log("-----------hasbomb1")
-    //     if(!runBomb) {
-    //         console.log("---------!-hasbomb")
-    //         console.log(runBomb)
-    //         console.log("----------!-hasbomb1")
-    //         console.log("co bomb va chua chay")
-    //         let back = AfterPlanted.bombedRun(myY, myX, map_back_to_bomb)
-    //         drive(back, destX, destY, true);
-    //         runBomb = true
-    //     }
-    // } else {
-    //     console.log("Chua co bomb")
-    //     let path =  ProcessGetDirection.findPath(myX, myY)
-    //     if (path == false) {
-    //         return true
-    //     }
-    //     step = converPathToGamePad(path)
-    //     setTimeout(function(){
-    //         drive(step+"b", destX, destY, false);
-    //         runBomb = false
-    //     }, 100);
-    // }
-
-    start = false
 }
 
 function converPathToGamePad(path) {

@@ -366,6 +366,10 @@ ProcessGetDirection.findPath = function (fromX, fromY) {
 
     let path = [];
     if (MAP[fromY][fromX] == ProcessGetDirection.quaran) {
+        console.log("----------------------quaran--------------------")
+        console.log(fromY)
+        console.log(fromX)
+        console.log("----------------------quaran--------------------")
         return false
     }
 

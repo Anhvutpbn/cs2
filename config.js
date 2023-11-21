@@ -1,4 +1,4 @@
-const gameId = '3bc9821c-1902-416e-a412-c4de168eec90';
+const gameId = '29af24f4-df1f-4d65-b3ba-c6184abc38bd';
 
 const D_LEFT = 1, D_RIGHT = 2, D_UP = 3, D_DOWN = 4;
 const D_BOMB = "b"
