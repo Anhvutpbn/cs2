@@ -55,43 +55,34 @@ const BOMBS = "bomb:setup"
 
 //API-2
 socket.on('ticktack player', (res) => {
-    console.log("--")
-    console.log(res)
-    console.log("--")
-    if(playerId.includes(res.player_id) && res.tag == BE_ISOLATED ) {
-            gameStart = true
-            flagMove = false
-    }
-    if(playerId.includes(res.player_id) && res.tag == BTPG) {
-        start = false
-        gameStart = true;
-        flagMove = true;
-        console.log(BTPG)
-    }
-    if(playerId.includes(res.player_id) && res.tag == START_MOVING) {
-        start = false
-        gameStart = false;
-    }
-    if(playerId.includes(res.player_id) && res.tag == STOP_MOVING) {
-        start = false
-        gameStart = false;
-    }
-
-    if(playerId.includes(res.player_id) && res.tag == MOVING_BANNED) {
-        start = false
-        gameStart = false;
-        console.log("Ngu qua ma")
-    }
-
     if(res.tag == START_GAME) {
         start = false
         gameStart = true;
     }
-
-    if(playerId.includes(res.player_id)  && BOMBE) {
+    else if(playerId.includes(res.player_id) && res.tag == BE_ISOLATED ) {
+            gameStart = true
+            flagMove = false
+    } else if(playerId.includes(res.player_id) && res.tag == BTPG) {
+        start = false
+        gameStart = true;
+        flagMove = true;
+        console.log(BTPG)
+    } else if(playerId.includes(res.player_id) && res.tag == START_MOVING) {
+        start = false
+        gameStart = false;
+    } else if(playerId.includes(res.player_id) && res.tag == STOP_MOVING) {
+        start = false
+        gameStart = false;
+    } else if(playerId.includes(res.player_id) && res.tag == MOVING_BANNED) {
+        start = false
+        gameStart = false;
+    } else if(playerId.includes(res.player_id)  && BOMBE) {
         bombSetup = false
         gameStart = false;
     }
+
+
+
     // if(playerId.includes(res.player_id) || res.tag.includes("start-game") || res.tag.includes("player:stop-moving")) {
         if (start) return;
         currentMap = res.map_info.map

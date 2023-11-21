@@ -52,18 +52,5 @@ var flag = START_GAME
 //API-2
 socket.on('ticktack player', (res) => {
     // let driverx = Math.floor(Math.random() * 4) + 1;
-    // drive(driverx);
+    // socket.emit("drive player", {direction: driverx})
 });
-
-function drive(d, x, y, f) {
-
-    console.log(d)
-    console.log(f)
-    if(f) {
-        ne_bom_timeout = true;
-        socket.emit("drive player", {direction: d})
-    }else{
-        ne_bom_timeout = false;
-        socket.emit("drive player", {direction: d})
-    }
-}
